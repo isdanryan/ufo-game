@@ -17,4 +17,5 @@ body {
 #game-area {
     background-color: black;
     border: solid white 10px;
+    /* game-area dimension set using javascript to allow for mobile detection */
 }
