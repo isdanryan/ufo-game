@@ -48,25 +48,33 @@ As a user I want to...
 * Be easy to use / control for any age capable of using a computer in its simplest form.
 
 ### **How This Will Be Achieved:**
-
+The site will have a home screen with the following:
+* A still screen of what the game looks like so the user can see what to expect
+* A simple set of instructions outlining the aim of the game and the controls
+* A button to start game
+* A button to view the users high scores
 
 ### **Wireframes**
 
 
 ### **Colour Scheme**
-
-
-## **Current Features Common to all pages**
-
+To make it easy to see and stick with a space theme, the game screen itself will be a black background with white characters.
+The prodominant colours across the site will be black and white, with a pixelate theme.
 
 ### **Typography**
 
 
 ### **Technologies Used**
-
+* HTML
+* CSS
+* Javascript
 
 ## **Individual Page Content features**
-
+## **Home Screen**
+* Logo heading along the top
+* Button for 'Start Game'
+* Button for 'High Scores'
+* Instructions for controls  
 
 ## **Testing Phase**
 ### **During Development Testing**
