@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;0,500;0,600;0,700;1,100;1,400;1,500;1,600;1,700&family=Roboto&display=swap');
+
+/* Imported fonts
+font-family: 'Montserrat', sans-serif;
+font-family: 'Roboto', sans-serif;
+*/
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    text-align: center;
+    background-color: lightgray; /*for testing, remove when no longer required */
+}
+
+#game-area {
+    background-color: black;
+    border: solid white 10px;
+}
