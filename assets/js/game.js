@@ -18,6 +18,18 @@ let ufo = {
     width: ufoWidth
 }
 
+// astroids
+let astroidArray = [];
+let astroidX = 700;
+let astroidY;
+let astroidImage;
+let astroid = {
+    x: astroidX,
+    y: astroidY,
+    height: 50,
+    width: 50
+}
+
 window.onload = function() {
     gamearea = document.getElementById("game-area");
     gamearea.height = gameareaHeight;
@@ -30,6 +42,14 @@ ufoImage = new Image();
 ufoImage.src = "./assets/img/ufo.jpg"
 ufoImage.onload = function () {
     context.drawImage(ufoImage, ufo.x, ufo.y, ufo.width, ufo.height);
+}
+
+//draw astroid
+astroidImage = new Image();
+astroidImage.src = "./assets/img/asteroid-a.png";
+astroidImage.onload = function () {
+    astroid.y = Math.floor(Math.random() * 250);
+    //context.drawImage(astroidImage, astroid.x, astroid.y, astroid.width, astroid.height);
 }
 
 requestAnimationFrame(update);
@@ -47,6 +67,7 @@ function update(){
     requestAnimationFrame(update);
     context.clearRect(0, 0, gamearea.height, gamearea.width);
     context.drawImage(ufoImage, ufo.x, ufo.y, ufo.width, ufo.height);
+    context.drawImage(astroidImage, astroid.x, astroid.y, astroid.width, astroid.height)
 }
 
 function moveUFOUp() {
