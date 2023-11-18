@@ -7,8 +7,8 @@ let gameover = false;
 
 
 // ufo variables
-let ufoHeight = 50;
-let ufoWidth = 80;
+let ufoHeight = 40;
+let ufoWidth = 86;
 let ufoX = 45;
 let ufoY = (gameareaHeight / 2) - (ufoHeight / 2);
 let ufoImage;
@@ -42,7 +42,7 @@ window.onload = function() {
     //draw ufo
     
     ufoImage = new Image();
-    ufoImage.src = "./assets/img/ufo.jpg"
+    ufoImage.src = "./assets/img/ufo-4.jpg"
     ufoImage.onload = function () {
         context.drawImage(ufoImage, ufo.x, ufo.y, ufo.width, ufo.height);
     }
@@ -105,8 +105,8 @@ function addAsteroid() {
     let asteroid = {
         x: asteroidX,
         y: asteroidY,
-        height: 50,
-        width: 50
+        height: asteroidHeight,
+        width: asteroidWidth
     }
 
     //create chance to spawn asteroid
@@ -114,7 +114,7 @@ function addAsteroid() {
     if (asteroidChance > 0.40) { // check chance isn't to often or not enough
         //draw asteroid
         asteroidImage = new Image();
-        asteroidImage.src = "./assets/img/asteroid-a.png";
+        asteroidImage.src = "./assets/img/asteroid-1.jpg";
         asteroid.y = Math.floor(Math.random() * 250);
         asteroidArray.push(asteroid); // add asteroid to array to track accross screen on redraws
     }
