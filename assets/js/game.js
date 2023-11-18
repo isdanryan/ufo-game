@@ -18,48 +18,49 @@ let ufo = {
     width: ufoWidth
 }
 
-// astroids
-let astroidArray = [];
-let astroidX = 700;
-let astroidY;
-let astroidImage;
-let astroid = {
-    x: astroidX,
-    y: astroidY,
-    height: 50,
-    width: 50
-}
+// asteroid variables
+let asteroidArray = [];
+let asteroidX = 790;
+let asteroidY;
+let asteroidImage;
+let asteroidHeight = 50;
+let asteroidWidth = 50;
 
+//draw game area
 window.onload = function() {
     gamearea = document.getElementById("game-area");
     gamearea.height = gameareaHeight;
     gamearea.width = gameareaWidth;
     
 
-//draw ufo on game area
-context = gamearea.getContext("2d");
-ufoImage = new Image();
-ufoImage.src = "./assets/img/ufo.jpg"
-ufoImage.onload = function () {
-    context.drawImage(ufoImage, ufo.x, ufo.y, ufo.width, ufo.height);
-}
+    //draw ufo
+    context = gamearea.getContext("2d");
+    ufoImage = new Image();
+    ufoImage.src = "./assets/img/ufo.jpg"
+    ufoImage.onload = function () {
+        context.drawImage(ufoImage, ufo.x, ufo.y, ufo.width, ufo.height);
+    }
 
-//draw astroid
-astroidImage = new Image();
-astroidImage.src = "./assets/img/asteroid-a.png";
-astroidImage.onload = function () {
-    astroid.y = Math.floor(Math.random() * 250);
-    //context.drawImage(astroidImage, astroid.x, astroid.y, astroid.width, astroid.height);
-}
+    
 
-requestAnimationFrame(update);
+    requestAnimationFrame(update);
+    setInterval(addAsteroid, 1000); // amount of time to place an asteroid omn canvas
 }
 
 document.addEventListener("keydown", function(event){
     if (event.code === "ArrowUp") {
-        moveUFOUp();
+        if (ufo.y > 0) {
+            moveUFOUp();
+        } else {
+            return;
+        }
     } else if (event.code === "ArrowDown"){
-        moveUFODown();
+        if (ufo.y+50 < gameareaHeight){
+            moveUFODown();
+        } else {
+            return;
+        }
+        
 }}
 )
 
@@ -67,7 +68,11 @@ function update(){
     requestAnimationFrame(update);
     context.clearRect(0, 0, gamearea.height, gamearea.width);
     context.drawImage(ufoImage, ufo.x, ufo.y, ufo.width, ufo.height);
-    context.drawImage(astroidImage, astroid.x, astroid.y, astroid.width, astroid.height)
+    for (let i = 0; i < asteroidArray.length; i++){
+        let asteroid = asteroidArray[i];
+        context.drawImage(asteroidImage, asteroid.x, asteroid.y, asteroid.width, asteroid.height)
+    }
+    
 }
 
 function moveUFOUp() {
@@ -80,4 +85,23 @@ function moveUFODown() {
     ufo.y += 5;
     console.log("move-down");
     requestAnimationFrame(update);
+}
+
+function addAsteroid() {
+    let asteroid = {
+        x: asteroidX,
+        y: asteroidY,
+        height: 50,
+        width: 50
+    }
+
+    //create chance to spawn asteroid
+    let asteroidChance = Math.random();
+    if (asteroidChance > 0.70) { // check chance isn't to often or not enough
+        //draw asteroid
+        asteroidImage = new Image();
+        asteroidImage.src = "./assets/img/asteroid-a.png";
+        asteroid.y = Math.floor(Math.random() * 250);
+        asteroidArray.push(asteroid); // add asteroid to array to track accross screen
+    }
 }
