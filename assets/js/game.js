@@ -3,6 +3,7 @@ let gamearea;
 let gameareaHeight = 300;
 let gameareaWidth = 800;
 let context;
+let gameover = false;
 
 
 // ufo variables
@@ -18,6 +19,7 @@ let ufo = {
     width: ufoWidth
 }
 
+
 // asteroid variables
 let asteroidArray = [];
 let asteroidX = 790;
@@ -32,10 +34,13 @@ window.onload = function() {
     gamearea = document.getElementById("game-area");
     gamearea.height = gameareaHeight;
     gamearea.width = gameareaWidth;
+    context = gamearea.getContext("2d");
+    context.fillStyle = "black";
+    context.fillRect(0, 0, gamearea.width, gamearea.height);
     
 
     //draw ufo
-    context = gamearea.getContext("2d");
+    
     ufoImage = new Image();
     ufoImage.src = "./assets/img/ufo.jpg"
     ufoImage.onload = function () {
@@ -63,30 +68,40 @@ document.addEventListener("keydown", function(event){
 }}
 )
 
+// update canvas for each frame
 function update(){
     requestAnimationFrame(update);
-    console.log("updated");
+    if (gameover) {
+        return;
+    };
     context.clearRect(0, 0, gamearea.width, gamearea.height);
     context.drawImage(ufoImage, ufo.x, ufo.y, ufo.width, ufo.height);
     for (let i = 0; i < asteroidArray.length; i++){
         let asteroid = asteroidArray[i];
         asteroid.x += moveSpeed;
         context.drawImage(asteroidImage, asteroid.x, asteroid.y, asteroid.width, asteroid.height)
+        if (detectColision(ufo, asteroid)) {
+            gameover = true;
+            console.log("gameover");
+        }
     }
     
 }
 
 function moveUFOUp() {
-    ufo.y += -5;
+    ufo.y += -8;
     console.log("move-up");
 }
 
 function moveUFODown() {
-    ufo.y += 5;
+    ufo.y += 8;
     console.log("move-down");
 }
 
 function addAsteroid() {
+    if (gameover) {
+        return;
+    };
     let asteroid = {
         x: asteroidX,
         y: asteroidY,
@@ -101,6 +116,18 @@ function addAsteroid() {
         asteroidImage = new Image();
         asteroidImage.src = "./assets/img/asteroid-a.png";
         asteroid.y = Math.floor(Math.random() * 250);
-        asteroidArray.push(asteroid); // add asteroid to array to track accross screen
+        asteroidArray.push(asteroid); // add asteroid to array to track accross screen on redraws
     }
+
+    // remove asteroids from array once off screen to prevent taking too much memory over time
+    if (asteroidArray.length > 6) {
+        asteroidArray.shift();
+    }
+}
+
+function detectColision(a, b) {
+    return a.x < b.x + b.width && //a's top left corner dosen't reach b's top right corner
+            a.x + a.width > b.x && //a's top right corner passes b's top left corner
+            a.y < b.y + b.height && //a's top left corner dosen't reach b's bottom left corner
+            a.y + a.height > b.y //a's bottom left corner passes b's top left corner
 }
