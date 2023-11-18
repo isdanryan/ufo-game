@@ -25,6 +25,7 @@ let asteroidY;
 let asteroidImage;
 let asteroidHeight = 50;
 let asteroidWidth = 50;
+let moveSpeed = -4; // set speed asteroids move accross screen right to left
 
 //draw game area
 window.onload = function() {
@@ -40,8 +41,6 @@ window.onload = function() {
     ufoImage.onload = function () {
         context.drawImage(ufoImage, ufo.x, ufo.y, ufo.width, ufo.height);
     }
-
-    
 
     requestAnimationFrame(update);
     setInterval(addAsteroid, 1000); // amount of time to place an asteroid omn canvas
@@ -66,10 +65,12 @@ document.addEventListener("keydown", function(event){
 
 function update(){
     requestAnimationFrame(update);
-    context.clearRect(0, 0, gamearea.height, gamearea.width);
+    console.log("updated");
+    context.clearRect(0, 0, gamearea.width, gamearea.height);
     context.drawImage(ufoImage, ufo.x, ufo.y, ufo.width, ufo.height);
     for (let i = 0; i < asteroidArray.length; i++){
         let asteroid = asteroidArray[i];
+        asteroid.x += moveSpeed;
         context.drawImage(asteroidImage, asteroid.x, asteroid.y, asteroid.width, asteroid.height)
     }
     
@@ -78,13 +79,11 @@ function update(){
 function moveUFOUp() {
     ufo.y += -5;
     console.log("move-up");
-    requestAnimationFrame(update);
 }
 
 function moveUFODown() {
     ufo.y += 5;
     console.log("move-down");
-    requestAnimationFrame(update);
 }
 
 function addAsteroid() {
@@ -97,7 +96,7 @@ function addAsteroid() {
 
     //create chance to spawn asteroid
     let asteroidChance = Math.random();
-    if (asteroidChance > 0.70) { // check chance isn't to often or not enough
+    if (asteroidChance > 0.40) { // check chance isn't to often or not enough
         //draw asteroid
         asteroidImage = new Image();
         asteroidImage.src = "./assets/img/asteroid-a.png";
