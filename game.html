@@ -4,11 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/game.css">
-    <script src="./assets/js/game.js"></script>
     <title>UFO Game</title>
 </head>
 <body>
-    <h1>UFO Game</h1>
+    <h1>UFO VS Asteroids</h1>
+    <div id="game-over">
+        <div id="modal-content">
+            <h2>Game Over!</h2>
+            <p>Your score: <span id="user-score"></span></p>
+            <button type="button" id="main-menu">Main Menu</button>
+            <button type="button" id="new-game">New Game</button>
+        </div>
+    </div>    
     <canvas id="game-area"></canvas>
+    <script src="./assets/js/game.js"></script>
 </body>
 </html>
