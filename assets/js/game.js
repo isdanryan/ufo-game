@@ -49,21 +49,36 @@ let star3Image;
 
 let starSpeed = -2;
 
+let gameOverWindow = document.getElementById("game-over");
+let newGameButton = document.getElementById("new-game");
+let mainMenuButton = document.getElementById("main-menu");
+let userScore = document.getElementById("user-score");
 
-//draw game area
+
 window.onload = function() {
+    startGame();
+    newGameButton.onclick = function() {
+        location.reload();
+    };
+    mainMenuButton.onclick = function() {
+        location.href = "index.html";
+    };
+}
+
+function startGame() {
+    //draw game area
+    asteroidArray.length = 0;
+    starArray.length = 0;
     gamearea = document.getElementById("game-area");
     gamearea.height = gameareaHeight;
     gamearea.width = gameareaWidth;
     context = gamearea.getContext("2d");
-    context.fillStyle = "black";
+    context.fillStyle = "#232137";
     context.fillRect(0, 0, gamearea.width, gamearea.height);
     
-
     //draw ufo
-    
     ufoImage = new Image();
-    ufoImage.src = "./assets/img/ufo-4.jpg"
+    ufoImage.src = "./assets/img/ufo-4.png"
     ufoImage.onload = function () {
         context.drawImage(ufoImage, ufo.x, ufo.y, ufo.width, ufo.height);
     }
@@ -81,7 +96,10 @@ window.onload = function() {
     requestAnimationFrame(update);
     setInterval(addAsteroid, 1000); // frequency asteroids are drawn
     setInterval(addStar, 500); // frequency stars are drawn
+
 }
+
+
 
 document.addEventListener("keydown", function(event){
     if (event.code === "ArrowUp") {
@@ -111,7 +129,7 @@ function update(){
         let star = starArray[s];
         star.x += starSpeed;
         context.drawImage(star.img, star.x, star.y, star.width, star.height);
-    }
+    };
     context.drawImage(ufoImage, ufo.x, ufo.y, ufo.width, ufo.height);
     for (let i = 0; i < asteroidArray.length; i++){
         let asteroid = asteroidArray[i];
@@ -119,10 +137,17 @@ function update(){
         context.drawImage(asteroidImage, asteroid.x, asteroid.y, asteroid.width, asteroid.height);
         if (detectColision(ufo, asteroid)) {
             gameover = true;
+            gameOverWindow.style.display = "block";
+            userScore.innerHTML = score+1; // add 1 to score to offset addtional frame between game over and pop up window
             console.log("gameover");
-        }
-    }
-    
+        };
+    };
+
+    // track score
+    context.fillStyle = "white";
+    context.font = "20px courier";
+    score++;
+    context.fillText(score, 5, 20);
     
 }
 
@@ -152,7 +177,7 @@ function addAsteroid() {
     if (asteroidChance > 0.30) { // check chance isn't to often or not enough
         //draw asteroid
         asteroidImage = new Image();
-        asteroidImage.src = "./assets/img/asteroid-1.jpg";
+        asteroidImage.src = "./assets/img/asteroid-1.png";
         asteroid.y = Math.floor(Math.random() * 250);
         asteroidArray.push(asteroid); // add asteroid to array to track accross screen on redraws
     }
@@ -163,11 +188,13 @@ function addAsteroid() {
     }
 }
 
+// detect collision
 function detectColision(a, b) {
-    return a.x < b.x + b.width && //a's top left corner dosen't reach b's top right corner
-            a.x + a.width > b.x && //a's top right corner passes b's top left corner
-            a.y < b.y + b.height && //a's top left corner dosen't reach b's bottom left corner
-            a.y + a.height > b.y //a's bottom right corner passes b's top left corner
+    return a.x < b.x + (b.width - 4) && //a's top left corner dosen't reach b's top right corner
+            a.x + (a.width - 4 ) > b.x && //a's top right corner passes b's top left corner
+            a.y < b.y + (b.height -4) && //a's top left corner dosen't reach b's bottom left corner
+            a.y + (a.height - 4) > b.y //a's bottom right corner passes b's top left corner
+            // apply offset of -4 to allow for closer hit with asteroid
 }
 
 function addStar() {
@@ -189,22 +216,22 @@ function addStar() {
         star.y = Math.floor(Math.random() * 270);
         star.width = star3Width;
         star.height = star3Height;
-        starArray.push(star); // add asteroid to array to track accross screen on redraws
+        starArray.push(star); // add star to array to track accross screen on redraws
     } else if (starChance > 0.40) { // check chance isn't to often or not enough
         star.img = star2Image
         star.y = Math.floor(Math.random() * 270);
         star.width = star2Width;
         star.height = star2Height;
-        starArray.push(star); // add asteroid to array to track accross screen on redraws
+        starArray.push(star); // add star to array to track accross screen on redraws
     } else if (starChance > 0.10) { // check chance isn't to often or not enough
         star.img = star1Image;
         star.y = Math.floor(Math.random() * 270);
         star.width = star1Width;
         star.height = star1Height;
-        starArray.push(star); // add asteroid to array to track accross screen on redraws
+        starArray.push(star); // add star to array to track accross screen on redraws
     }
 
-    // remove asteroids from array once off screen to prevent taking too much memory over time
+    // remove stars from array once off screen to prevent taking too much memory over time
     if (starArray.length > 20) {
         starArray.shift();
     }
