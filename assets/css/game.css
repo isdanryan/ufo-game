@@ -24,12 +24,57 @@ h1 {
     color: white;
 }
 
+h2 {
+    text-align: center;
+    text-decoration: underline;
+    margin: 40px auto 40px auto;
+}
+
+.blue-box {
+    background: #232137;
+    border: solid white 10px;
+    border-radius: 5px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu {
+    width: 50%;
+    height: fit-content;
+    margin: 0 auto 50px auto;
+    padding: 0 40px 20px;
+    text-align: left;
+    color: white;
+}
+
+
+.screen-shot {
+    height: 300px;
+}
+
+.button-container {
+    width: 100%;
+    text-align: center;
+}
+
+#start-game {
+    height: fit-content;
+    width: fit-content;
+    padding: 5px 10px;
+    margin: 20px auto;
+    border-radius: 10px;
+    text-align: center;
+}
+
 #game-area {
     background-color: #232137;
     border: solid white 10px;
+    border-radius: 5px;
     /* game-area dimension set using javascript to allow for mobile detection */
 }
-
 
 #game-over {
     display: none; /* Hidden by default */
