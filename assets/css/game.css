@@ -1,9 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;0,500;0,600;0,700;1,100;1,400;1,500;1,600;1,700&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,400;0,500;0,600;0,700;1,100;1,400;1,500;1,600;1,700&family=Noto+Sans+Linear+B&family=Roboto&display=swap');
 
 /* Imported fonts
 font-family: 'Montserrat', sans-serif;
 font-family: 'Roboto', sans-serif;
 */
+
+@font-face {
+    font-family: 'Alien';
+    src: url('../fonts/Glipervelz.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
 * {
     font-family: 'Montserrat', sans-serif;
@@ -22,6 +29,15 @@ body {
 
 h1 {
     color: white;
+    font-family: 'Alien', sans-serif;
+    font-size: 2rem;
+    height: 54px;
+    margin: 20px 0 auto 0;
+    vertical-align: middle;
+}
+
+.font { 
+    font-family: 'Montserrat', sans-serif; !important
 }
 
 h2 {
