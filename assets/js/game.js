@@ -49,20 +49,24 @@ let star3Image;
 
 let starSpeed = -2;
 
-let gameOverWindow = document.getElementById("game-over");
-let newGameButton = document.getElementById("new-game");
-let mainMenuButton = document.getElementById("main-menu");
-let userScore = document.getElementById("user-score");
+const gameOverWindow = document.getElementById("game-over");
+const newGameButton = document.getElementById("new-game");
+const mainMenuButton = document.getElementById("main-menu");
+const userScore = document.getElementById("user-score"); 
+const upButton = document.getElementById("button-up");
+const downButton = document.getElementById("button-down");
 
 
 window.onload = function() {
     startGame();
-    newGameButton.onclick = function() {
+    newGameButton.onclick = () => {
         location.reload();
     };
-    mainMenuButton.onclick = function() {
+    mainMenuButton.onclick = () => {
         location.href = "index.html";
     };
+    upButton.onclick = moveUFOUp;
+    downButton.onclick = moveUFODown;
 }
 
 function startGame() {
@@ -95,7 +99,7 @@ function startGame() {
 
     requestAnimationFrame(update);
     setInterval(addAsteroid, 1000); // frequency asteroids are drawn
-    setInterval(addStar, 500); // frequency stars are drawn
+    setInterval(addStar, 500); // frequency stars are drawn, stars are drawn at slower rate to add parallax effect
 
 }
 

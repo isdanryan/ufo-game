@@ -9,14 +9,18 @@
 <body>
     <h1 class="font">UFO VS ASTEROIDS</h1>
     <div id="game-over">
-        <div id="modal-content">
-            <h2>Game Over!</h2>
+        <div id="modal-content" class="no-select">
+            <h3>Game Over!</h3>
             <p>Your score: <span id="user-score"></span></p>
-            <button type="button" id="main-menu">Main Menu</button>
-            <button type="button" id="new-game">New Game</button>
+            <button type="button" id="main-menu" class="no-select">Main Menu</button>
+            <button type="button" id="new-game" class="no-select">New Game</button>
         </div>
     </div>    
     <canvas id="game-area"></canvas>
+    <div class="control-buttons">
+        <div id="button-up">/\</div>
+        <div id="button-down">\/</div>
+    </div>
     <script src="./assets/js/game.js"></script>
 </body>
 </html>
