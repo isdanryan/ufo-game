@@ -6,7 +6,7 @@ let changeControlsHeading = true;
 let instructionHeading = document.getElementById("instruction-heading");
 let controlsHeading = document.getElementById("controls-heading");
 let opacity = 1;
-let interval = 100;
+let interval = 70;
 
 window.onload = function() {
     startGameBtn.onclick = function() {
