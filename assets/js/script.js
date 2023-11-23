@@ -1,5 +1,10 @@
 let startGameBtn = document.getElementById("start-game");
 let title = document.getElementById("title");
+let changeTitle = true;
+let changeInstructionHeading = true;
+let changeControlsHeading = true;
+let instructionHeading = document.getElementById("instruction-heading");
+let controlsHeading = document.getElementById("controls-heading");
 let opacity = 1;
 let interval = 100;
 
@@ -7,44 +12,34 @@ window.onload = function() {
     startGameBtn.onclick = function() {
         location.href = "game.html";
     };
-    setTimeout(fadeTitle, 1200);
+    setTimeout(() => {fadeOutTitle(title)}, 1200);
 }
 
-function changeFont() {
-    
-}
-
-function fadeTitle() {
-        const fadeOutInterval = setInterval(() => {
-            if (opacity > 0){
-            opacity += -0.1;
-            title.style.opacity = opacity;
-            console.log(opacity);
-            } else {
-            clearInterval(fadeOutInterval);
-            fadeInTitle();
-            }
-        }, interval);
-}
-
-function fadeInTitle() {
-    title.style.fontFamily = "Montserrat, sans-serif";
-    title.style.fontSize = "1.8rem";
-    const fadeInInterval = setInterval(() => {
-        if (opacity < 1){
-            opacity += 0.1;
-            title.style.opacity = opacity;
-            console.log(opacity);
+function fadeOutTitle(str) {
+    var fadeInterval = setInterval(() => {
+        if (opacity > 0){
+        opacity += -0.1;
+        str.style.opacity = opacity;
+        console.log(opacity);
         } else {
-            clearInterval(fadeInInterval);
+        clearInterval(fadeInterval);
+        fadeInTitle(str);
         }
     }, interval);
 }
-// function fadeInTitle() {
-//     if (opacity < 1) {
-//         opacity += 0.1;
-//         title.style.opacity = opacity;
-//         setTimeout(fadeInTitle, 100);
-//         console.log(opacity);
-//     };
-// }
+
+function fadeInTitle(str) {
+    str.style.fontFamily = "Montserrat, sans-serif";
+    str.style.fontSize = "1.8rem";
+    var fadeInterval = setInterval(() => {
+        if (opacity < 1){
+            opacity += 0.1;
+            str.style.opacity = opacity;
+            console.log(opacity);
+        } else {
+            clearInterval(fadeInterval);
+            changeInstructionHeading ? (fadeOutTitle(instructionHeading), changeInstructionHeading = false)
+                : changeControlsHeading ? (fadeOutTitle(controlsHeading), changeControlsHeading = false) : console.log("All changed");
+        };
+    }, interval);
+}
