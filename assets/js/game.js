@@ -1,3 +1,5 @@
+
+
 // game area variables
 let gamearea;
 let gameareaHeight = 300;
@@ -27,7 +29,7 @@ let asteroidY;
 let asteroidImage;
 let asteroidHeight = 50;
 let asteroidWidth = 50;
-let moveSpeed = -4; // set speed asteroids move accross screen right to left
+let asteroidSpeed = -4; // set speed asteroids move accross screen right to left
 
 // stars for background
 
@@ -49,6 +51,22 @@ let star3Image;
 
 let starSpeed = -2;
 
+// get device screen width
+let screenWidth = screen.width;
+if (screenWidth < 740 && screenWidth > 540) {
+    gameareaWidth = 500;
+    asteroidX = 500;
+    starX = 500;
+    asteroidSpeed = -3;
+    starSpeed = -1;
+} else if (screenWidth < 500) {
+    gameareaWidth = 300;
+    asteroidX = 300
+    starX = 300;
+    asteroidSpeed = -2;
+    starSpeed = -1;
+}
+
 const gameOverWindow = document.getElementById("game-over");
 const newGameButton = document.getElementById("new-game");
 const mainMenuButton = document.getElementById("main-menu");
@@ -58,6 +76,7 @@ const downButton = document.getElementById("button-down");
 
 
 window.onload = function() {
+    console.log(screenWidth);
     startGame();
     newGameButton.onclick = () => {
         location.reload();
@@ -137,7 +156,7 @@ function update(){
     context.drawImage(ufoImage, ufo.x, ufo.y, ufo.width, ufo.height);
     for (let i = 0; i < asteroidArray.length; i++){
         let asteroid = asteroidArray[i];
-        asteroid.x += moveSpeed;
+        asteroid.x += asteroidSpeed;
         context.drawImage(asteroidImage, asteroid.x, asteroid.y, asteroid.width, asteroid.height);
         if (detectColision(ufo, asteroid)) {
             gameover = true;
