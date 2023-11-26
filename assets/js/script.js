@@ -12,7 +12,7 @@ window.onload = function() {
     startGameBtn.onclick = function() {
         location.href = "game.html";
     };
-    setTimeout(() => {fadeOutTitle(title)}, 1200);
+    setTimeout(() => {fadeOutTitle(title)}, 1000);
 }
 
 function fadeOutTitle(str) {
