@@ -56,13 +56,19 @@ let screenWidth = screen.width;
 if (screenWidth < 740 && screenWidth > 540) {
     gameareaWidth = 500;
     asteroidX = 500;
-    starX = 500;
+    starX = 500; 
     asteroidSpeed = -3;
     starSpeed = -1;
 } else if (screenWidth < 500) {
     gameareaWidth = 300;
     asteroidX = 300
     starX = 300;
+    asteroidSpeed = -2;
+    starSpeed = -1;
+} else if (screenWidth < 300) {
+    gameareaWidth = 100;
+    asteroidX = 200
+    starX = 200;
     asteroidSpeed = -2;
     starSpeed = -1;
 }
