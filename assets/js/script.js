@@ -1,6 +1,5 @@
 let startGameBtn = document.getElementById("start-game");
 let title = document.getElementById("title");
-let changeTitle = true;
 let changeInstructionHeading = true;
 let changeControlsHeading = true;
 let instructionHeading = document.getElementById("instruction-heading");
@@ -13,7 +12,7 @@ window.onload = function() {
         location.href = "game.html";
     };
     setTimeout(() => {fadeOutTitle(title)}, 1000);
-}
+};
 
 function fadeOutTitle(str) {
     var fadeInterval = setInterval(() => {
@@ -40,6 +39,6 @@ function fadeInTitle(str) {
             clearInterval(fadeInterval);
             changeInstructionHeading ? (fadeOutTitle(instructionHeading), changeInstructionHeading = false)
                 : changeControlsHeading ? (fadeOutTitle(controlsHeading), changeControlsHeading = false) : console.log("All changed");
-        };
+        }
     }, interval);
 }
