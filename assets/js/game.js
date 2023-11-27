@@ -107,7 +107,7 @@ function startGame() {
     
     //draw ufo
     ufoImage = new Image();
-    ufoImage.src = "./assets/img/ufo-4.png"
+    ufoImage.src = "./assets/img/ufo-1.png"
     ufoImage.onload = function () {
         context.drawImage(ufoImage, ufo.x, ufo.y, ufo.width, ufo.height);
     }
