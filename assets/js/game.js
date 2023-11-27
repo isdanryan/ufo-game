@@ -1,5 +1,3 @@
-
-
 // game area variables
 let gamearea;
 let gameareaHeight = 300;
@@ -32,7 +30,6 @@ let asteroidWidth = 50;
 let asteroidSpeed = -4; // set speed asteroids move accross screen right to left
 
 // stars for background
-
 let starArray = [];
 
 let star1Width = 10;
@@ -49,9 +46,9 @@ let star1Image;
 let star2Image;
 let star3Image;
 
-let starSpeed = -2;
+let starSpeed = -2; // set speed stars move accross screen right to left, set lower than asteroids to create parallax effect
 
-// get device screen width
+// get device screen width and set game area and characters
 let screenWidth = screen.width;
 if (screenWidth < 740 && screenWidth > 540) {
     gameareaWidth = 500;
@@ -59,18 +56,21 @@ if (screenWidth < 740 && screenWidth > 540) {
     starX = 500; 
     asteroidSpeed = -3;
     starSpeed = -1;
+    ufo.x = 35;
 } else if (screenWidth < 500) {
     gameareaWidth = 300;
     asteroidX = 300
     starX = 300;
     asteroidSpeed = -2;
     starSpeed = -1;
+    ufo.x = 20;
 } else if (screenWidth < 300) {
     gameareaWidth = 100;
     asteroidX = 200
     starX = 200;
     asteroidSpeed = -2;
     starSpeed = -1;
+    ufo.x = 10;
 }
 
 const gameOverWindow = document.getElementById("game-over");
@@ -124,11 +124,8 @@ function startGame() {
 
     requestAnimationFrame(update);
     setInterval(addAsteroid, 1000); // frequency asteroids are drawn
-    setInterval(addStar, 500); // frequency stars are drawn, stars are drawn at slower rate to add parallax effect
-
+    setInterval(addStar, 500); // frequency stars are drawn
 }
-
-
 
 document.addEventListener("keydown", function(event){
     if (event.code === "ArrowUp") {
@@ -176,8 +173,7 @@ function update(){
     context.fillStyle = "white";
     context.font = "20px courier";
     score++;
-    context.fillText(score, 5, 20);
-    
+    context.fillText(score, 5, 20); 
 }
 
 function moveUFOUp() {
@@ -218,11 +214,11 @@ function addAsteroid() {
 }
 
 // detect collision
-function detectColision(a, b) {
-    return a.x < b.x + (b.width - 4) && //a's top left corner dosen't reach b's top right corner
-            a.x + (a.width - 4 ) > b.x && //a's top right corner passes b's top left corner
-            a.y < b.y + (b.height -4) && //a's top left corner dosen't reach b's bottom left corner
-            a.y + (a.height - 4) > b.y //a's bottom right corner passes b's top left corner
+function detectColision(ufoArea, asteroidArea) {
+    return ufoArea.x < asteroidArea.x + (asteroidArea.width - 4) && //ufo's top left corner dosen't reach asteroid's top right corner
+            ufoArea.x + (ufoArea.width - 4 ) > b.x && //ufo's top right corner passes asteroid's top left corner
+            ufoArea.y < asteroidArea.y + (asteroidArea.height -4) && //ufo's top left corner dosen't reach asteroid's bottom left corner
+            ufoArea.y + (ufoArea.height - 4) > b.y //ufo's bottom right corner passes asteroid's top left corner
             // apply offset of -4 to allow for closer hit with asteroid
 }
 
