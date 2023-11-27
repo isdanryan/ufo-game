@@ -143,11 +143,28 @@ h3 {
     -ms-user-select: none;
     user-select: none;
     cursor: grab;
+    position: relative;
+}
+
+#button-up::before, #button-down::before {
+    content: " ";
+    position: absolute;
+    border: #232137 solid 2px;
+    border-radius: 8px;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
 }
 
 .no-select {
     -webkit-user-select: none; 
     -ms-user-select: none;
     user-select: none;
+    margin-bottom: 15px;
+
 }
 
+button {
+    line-height: 2rem;
+}
