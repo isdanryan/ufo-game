@@ -89,12 +89,10 @@ During the development process, I continually carried out manual testing in the 
 
 **JEST testing**
 
-* During testing I used JEST to create several test, mainly testing for key area such as:
+* During testing I used JEST to create several test, mainly testing for key areas such as:
     * UFO moving up and down on key press
     * Game area is resized depending on screen size
     * Game over on Asteroid collision
-
-![JEST Testing Screenshots](assets/screens/jest.png)
 
 * Manually testing each element for appearance and responsiveness via Google Chrome dev tools.
 
@@ -163,6 +161,10 @@ During the development process, I continually carried out manual testing in the 
 
 * game.html
 ![HTML validator results](assets/screens/css-validator-game.png)
+
+#### ***JavaScript*** - JEST
+
+![JEST Testing Screenshots](assets/screens/jest.png)
 
 ### **Lighthouse Scores**
 #### ***index.html***
