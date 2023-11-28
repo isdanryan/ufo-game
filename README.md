@@ -24,6 +24,7 @@ Based on the hidden game within Google's "no internet connection" window, this v
     * [**Bugs & Fixes**](#bugs-and-fixes)
     * [**Post Development Testing**](#post-development-testing)
 1. [**Deployment**](#deployment)
+1. [**Screen Shots**](#screen-shots)
 1. [**Future Enhancements**](#future-enhancements)
 1. [**Credits**](#credits)
 
@@ -53,6 +54,9 @@ The site will have a home screen with the following:
 
 ### **Wireframes**
 
+![Wireframe](assets/screens/wireframe-1.png)
+
+![Wireframe](assets/screens/wireframe-2.png)
 
 ### **Colour Scheme**
 To make it easy to see and stick with a space theme, the game screen itself will be a dark blue background to simulate space. My original idea to use black was too dark. The characters on screen will be with white/light grey characters.
@@ -170,6 +174,14 @@ During the development process, I continually carried out manual testing in the 
 ## **Deployment**
 I have deployed the live site to my own dowmain. Which can be found at
 [UFO VS ASTEROIDS](http://danryan.uk/ufo)
+
+## **Screen Shots** ##
+
+![Screenshot](assets/screens/screenshot-1.png)
+
+![Wireframe](assets/screens/screenshot-2.png)
+
+![Wireframe](assets/screens/screenshot-3.png)
 
 ## **Future Enhancements**
 * I would like to imrove the images for the UFO and Asteroids, create them as svg files for a better resolution and scaling.
