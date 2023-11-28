@@ -35,7 +35,7 @@ Based on the hidden game within Google's "no internet connection" window, this v
 
 ### **User Stories:**
 As a user I want to...
-* Play a simnple game that can distract me for a few minutes
+* Play a simple game that can distract me for a few minutes
 * Easily understand the games controls
 * Easily find out any instructions needed to play the game
 * Access and play the game in the quickest way possible
@@ -115,7 +115,7 @@ During the development process, I continually carried out manual testing in the 
 * In addition to this, I also asked several people to test using iPhones and Apple Mac laptops/desktops. These users reported no issues or bugs.
 
 ### **Testing User Stories**
-## Play a simnple game that can distract me for a few minutes
+## Play a simple game that can distract me for a few minutes
 
     - The game can be quickly started and the usual play time is anywhere from a few seconds to a minute.
 
