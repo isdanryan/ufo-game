@@ -169,7 +169,7 @@ During the development process, I continually carried out manual testing in the 
 ![Lighthouse results](assets/screens/lighthouse-index.png)
 
 #### ***game.html***
-![lighthouse results](assets/screens/html-validator-game.png)
+![lighthouse results](assets/screens/lighthouse-game.png)
 
 ## **Deployment**
 I have deployed the live site to my own dowmain. Which can be found at
