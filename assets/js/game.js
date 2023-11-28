@@ -161,7 +161,7 @@ function update(){
         let asteroid = asteroidArray[i];
         asteroid.x += asteroidSpeed;
         context.drawImage(asteroidImage, asteroid.x, asteroid.y, asteroid.width, asteroid.height);
-        if (detectColision(ufo, asteroid)) {
+        if (detectCollision(ufo, asteroid)) {
             gameover = true;
             gameOverWindow.style.display = "block";
             userScore.innerHTML = score+1; // add 1 to score to offset addtional frame between game over and pop up window
@@ -214,11 +214,11 @@ function addAsteroid() {
 }
 
 // detect collision
-function detectColision(ufoArea, asteroidArea) {
+function detectCollision(ufoArea, asteroidArea) {
     return ufoArea.x < asteroidArea.x + (asteroidArea.width - 4) && //ufo's top left corner dosen't reach asteroid's top right corner
-            ufoArea.x + (ufoArea.width - 4 ) > b.x && //ufo's top right corner passes asteroid's top left corner
+            ufoArea.x + (ufoArea.width - 4 ) > asteroidArea.x && //ufo's top right corner passes asteroid's top left corner
             ufoArea.y < asteroidArea.y + (asteroidArea.height -4) && //ufo's top left corner dosen't reach asteroid's bottom left corner
-            ufoArea.y + (ufoArea.height - 4) > b.y //ufo's bottom right corner passes asteroid's top left corner
+            ufoArea.y + (ufoArea.height - 4) > asteroidArea.y //ufo's bottom right corner passes asteroid's top left corner
             // apply offset of -4 to allow for closer hit with asteroid
 }
 
@@ -261,3 +261,5 @@ function addStar() {
         starArray.shift();
     }
 }
+
+module.exports = {score, gameareaHeight, gameareaWidth, gameover, score, ufoHeight, ufoWidth, ufoX, ufoY, asteroidArray, asteroidHeight, asteroidSpeed, asteroidWidth, asteroidX, star1Height, star1Width, star2Height, star2Width, star3Height, star3Width, starArray, starSpeed, starX, ufo, moveUFODown, moveUFOUp, detectCollision};
