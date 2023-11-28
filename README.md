@@ -83,7 +83,14 @@ I have used a custom font for the initial 'Alien' language, which will then chan
 ### **During Development Testing**
 During the development process, I continually carried out manual testing in the following ways:-
 
-* JEST testing.
+**JEST testing**
+
+* During testing I used JEST to create several test, mainly testing for key area such as:
+    * UFO moving up and down on key press
+    * Game area is resized depending on screen size
+    * Game over on Asteroid collision
+
+![JEST Testing Screenshots](assets/screens/jest.png)
 
 * Manually testing each element for appearance and responsiveness via Google Chrome dev tools.
 
